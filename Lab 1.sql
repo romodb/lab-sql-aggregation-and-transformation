@@ -1,16 +1,33 @@
-SELECT * FROM film;
+-- Retp 1:
+-- Ejercicio 1: Consigue y almacena los valores extremos.
 
-SELECT name AS language FROM language;
+SET @min_duracion = (SELECT MIN(length) FROM film);
+SET @max_duraci = (SELECT MAX(length) FROM film);
 
-SELECT first_name AS staff FROM staff;
+-- Expresa la duracion promedio de la peli en horas y minutos.
 
-SELECT DISTINCT release_year AS film FROM film;
+SELECT FLOOR(@min_duraci);
+SELECT FLOOR(@max_duracion);
+SELECT ROUND(LENGTH, 2) FROM film;
 
-SELECT COUNT(*) AS store FROM store;
+/* Ejercicio 2:
+Numero de dias que la empresa estuvo en funcionamiento:
+*/
 
-SELECT COUNT(*) AS staff FROM staff;
+SELECT FLOOR(@min_date = (SELECT MIN(rental_date) FROM rental);
+SELECT FLOOR(@max_date = (SELECT MAX(return_date) FROM rental);
+SELECT DATEDIFF(@min_date, @max_date);
 
-SELECT COUNT(*) AS rental_id FROM rental; 
+ 
+-- Usando la informacion del alquiler añade dos columnas para el mes y el dia de la semana. Saca los primeros 20 resultados.
 
-SELECT COUNT(DISTINCT last_name) AS distinct_last_names FROM actor;
+SELECT rental_date,
+	MONTH(rental_date) AS rental_month, 
+	DAYNAME(rental_date) AS rental_day 
+FROM rental LIMIT 20;
+ 
+-- Bonus: usando la información de alquiler agrega una columna extra llamada DAY_TYPE con los valores 'weekend' o 'workday', según el día de la semana.
 
+
+ 
+-- Reto 2:
